@@ -1,0 +1,13 @@
+ctwing_skit_bc28\cpu.o: ..\rt-thread\src\cpu.c
+ctwing_skit_bc28\cpu.o: ..\rt-thread\include\rtthread.h
+ctwing_skit_bc28\cpu.o: ..\bsp\rtconfig.h
+ctwing_skit_bc28\cpu.o: .\RTE\_Ctwing_SKIT_BC28\RTE_Components.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\include\rtdebug.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\include\rtdef.h
+ctwing_skit_bc28\cpu.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\include\rtservice.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\include\rtm.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\include\rtthread.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\components\ringbuff\ringbuffer.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\components\finsh\finsh_api.h
+ctwing_skit_bc28\cpu.o: ..\rt-thread\include\rthw.h
