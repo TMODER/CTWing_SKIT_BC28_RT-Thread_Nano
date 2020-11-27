@@ -16,7 +16,7 @@
 // <h>Basic Configuration
 // <o>Maximal level of thread priority <8-256>
 //  <i>Default: 32
-#define RT_THREAD_PRIORITY_MAX  10
+#define RT_THREAD_PRIORITY_MAX  20
 // <o>OS tick per second
 //  <i>Default: 1000   (1ms)
 #define RT_TICK_PER_SECOND  1000
@@ -35,7 +35,7 @@
 
 // <o>the stack size of main thread<1-4086>
 //  <i>Default: 512
-#define RT_MAIN_THREAD_STACK_SIZE     512
+#define RT_MAIN_THREAD_STACK_SIZE     512+256
 
 // </h>
 
@@ -93,7 +93,7 @@
 // </c>
 // <c1>Using MailBox
 //  <i>Using MailBox
-#define RT_USING_MAILBOX
+//#define RT_USING_MAILBOX
 // </c>
 // <c1>Using Message Queue
 //  <i>Using Message Queue
@@ -143,8 +143,8 @@
     // <o>the history lines of finsh thread <1-32>
     //  <i>the history lines of finsh thread
     //  <i>Default: 5
-    #define FINSH_HISTORY_LINES         1
-
+    #define FINSH_HISTORY_LINES        5
+    #define   FINSH_USING_DESCRIPTION
     #define FINSH_USING_SYMTAB
     // </h>
 #endif

@@ -52,3 +52,4 @@ ctwing_skit_bc28\main.o: ..\bsp\HTS221.h
 ctwing_skit_bc28\main.o: ..\com\com.h
 ctwing_skit_bc28\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 ctwing_skit_bc28\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+ctwing_skit_bc28\main.o: ..\user\iot_thread.h

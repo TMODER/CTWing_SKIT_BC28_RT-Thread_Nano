@@ -5,7 +5,7 @@
 #include "rtthread.h"
 #include "bc28_thread.h"
 
-typedef struct thread_info
+__packed typedef struct thread_info
 {
 	 const char * thread_name;
 	 void (*entry)(void *parameter);

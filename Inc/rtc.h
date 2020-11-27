@@ -20,7 +20,7 @@
 #ifndef __rtc_H
 #define __rtc_H
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -39,6 +39,8 @@ extern RTC_HandleTypeDef hrtc;
 void MX_RTC_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+void HAL_RTC_Alarm_init(void);
+void rt_rtc_f1_bkp_update(void);
 
 /* USER CODE END Prototypes */
 

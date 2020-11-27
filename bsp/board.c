@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include <rthw.h>
 #include <rtthread.h>
+#include "board.h"
 #include "main.h"
 
 
@@ -83,7 +84,7 @@ void rt_hw_board_init()
 #endif
 
 #if defined(RT_USING_USER_MAIN) && defined(RT_USING_HEAP)
-    rt_system_heap_init(rt_heap_begin_get(), rt_heap_end_get());
+    rt_system_heap_init((void *)HEAP_BEGIN, (void *)HEAP_END);
 #endif
 }
 

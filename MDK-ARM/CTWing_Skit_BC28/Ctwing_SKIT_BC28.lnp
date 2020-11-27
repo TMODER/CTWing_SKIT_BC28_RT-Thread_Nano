@@ -13,6 +13,7 @@
 "ctwing_skit_bc28\iot_thread.o"
 "ctwing_skit_bc28\aepservicecodes.o"
 "ctwing_skit_bc28\i2c.o"
+"ctwing_skit_bc28\user_event.o"
 "ctwing_skit_bc28\stm32f1xx_hal_gpio_ex.o"
 "ctwing_skit_bc28\stm32f1xx_hal_rtc.o"
 "ctwing_skit_bc28\stm32f1xx_hal_rtc_ex.o"

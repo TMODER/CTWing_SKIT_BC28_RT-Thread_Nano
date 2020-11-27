@@ -35,7 +35,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
- 
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -67,19 +67,19 @@ extern UART_HandleTypeDef huart2;
 /* USER CODE END EV */
 
 /******************************************************************************/
-/*           Cortex-M3 Processor Interruption and Exception Handlers          */ 
+/*           Cortex-M3 Processor Interruption and Exception Handlers          */
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
   */
 void NMI_Handler(void)
 {
-  /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+    /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
 
-  /* USER CODE END NonMaskableInt_IRQn 0 */
-  /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+    /* USER CODE END NonMaskableInt_IRQn 0 */
+    /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
 
-  /* USER CODE END NonMaskableInt_IRQn 1 */
+    /* USER CODE END NonMaskableInt_IRQn 1 */
 }
 
 /**
@@ -102,14 +102,14 @@ void NMI_Handler(void)
   */
 void MemManage_Handler(void)
 {
-  /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+    /* USER CODE BEGIN MemoryManagement_IRQn 0 */
 
-  /* USER CODE END MemoryManagement_IRQn 0 */
-  while (1)
-  {
-    /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
-    /* USER CODE END W1_MemoryManagement_IRQn 0 */
-  }
+    /* USER CODE END MemoryManagement_IRQn 0 */
+    while (1)
+    {
+        /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
+        /* USER CODE END W1_MemoryManagement_IRQn 0 */
+    }
 }
 
 /**
@@ -117,14 +117,14 @@ void MemManage_Handler(void)
   */
 void BusFault_Handler(void)
 {
-  /* USER CODE BEGIN BusFault_IRQn 0 */
+    /* USER CODE BEGIN BusFault_IRQn 0 */
 
-  /* USER CODE END BusFault_IRQn 0 */
-  while (1)
-  {
-    /* USER CODE BEGIN W1_BusFault_IRQn 0 */
-    /* USER CODE END W1_BusFault_IRQn 0 */
-  }
+    /* USER CODE END BusFault_IRQn 0 */
+    while (1)
+    {
+        /* USER CODE BEGIN W1_BusFault_IRQn 0 */
+        /* USER CODE END W1_BusFault_IRQn 0 */
+    }
 }
 
 /**
@@ -132,14 +132,14 @@ void BusFault_Handler(void)
   */
 void UsageFault_Handler(void)
 {
-  /* USER CODE BEGIN UsageFault_IRQn 0 */
+    /* USER CODE BEGIN UsageFault_IRQn 0 */
 
-  /* USER CODE END UsageFault_IRQn 0 */
-  while (1)
-  {
-    /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
-    /* USER CODE END W1_UsageFault_IRQn 0 */
-  }
+    /* USER CODE END UsageFault_IRQn 0 */
+    while (1)
+    {
+        /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
+        /* USER CODE END W1_UsageFault_IRQn 0 */
+    }
 }
 
 /**
@@ -147,12 +147,12 @@ void UsageFault_Handler(void)
   */
 void SVC_Handler(void)
 {
-  /* USER CODE BEGIN SVCall_IRQn 0 */
+    /* USER CODE BEGIN SVCall_IRQn 0 */
 
-  /* USER CODE END SVCall_IRQn 0 */
-  /* USER CODE BEGIN SVCall_IRQn 1 */
+    /* USER CODE END SVCall_IRQn 0 */
+    /* USER CODE BEGIN SVCall_IRQn 1 */
 
-  /* USER CODE END SVCall_IRQn 1 */
+    /* USER CODE END SVCall_IRQn 1 */
 }
 
 /**
@@ -160,12 +160,12 @@ void SVC_Handler(void)
   */
 void DebugMon_Handler(void)
 {
-  /* USER CODE BEGIN DebugMonitor_IRQn 0 */
+    /* USER CODE BEGIN DebugMonitor_IRQn 0 */
 
-  /* USER CODE END DebugMonitor_IRQn 0 */
-  /* USER CODE BEGIN DebugMonitor_IRQn 1 */
+    /* USER CODE END DebugMonitor_IRQn 0 */
+    /* USER CODE BEGIN DebugMonitor_IRQn 1 */
 
-  /* USER CODE END DebugMonitor_IRQn 1 */
+    /* USER CODE END DebugMonitor_IRQn 1 */
 }
 
 /**
@@ -202,40 +202,91 @@ void DebugMon_Handler(void)
 /* please refer to the startup file (startup_stm32f1xx.s).                    */
 /******************************************************************************/
 
+//void DMA1_Channel5_IRQHandler(void)
+//{
+//  /* USER CODE BEGIN DMA1_Channel5_IRQn 0 */
+
+//  /* USER CODE END DMA1_Channel5_IRQn 0 */
+//  HAL_DMA_IRQHandler(&hdma_usart1_rx);
+//  /* USER CODE BEGIN DMA1_Channel5_IRQn 1 */
+
+//  /* USER CODE END DMA1_Channel5_IRQn 1 */
+//}
+
+
 /**
   * @brief This function handles RTC global interrupt.
   */
 void RTC_IRQHandler(void)
 {
-  /* USER CODE BEGIN RTC_IRQn 0 */
+    /* USER CODE BEGIN RTC_IRQn 0 */
 
-  /* USER CODE END RTC_IRQn 0 */
- 
-  /* USER CODE BEGIN RTC_IRQn 1 */
-  rt_interrupt_enter();	
-  HAL_GPIO_TogglePin(RGB1_B_GPIO_Port,RGB1_B_Pin);
-	__HAL_RTC_SECOND_CLEAR_FLAG(&hrtc,RTC_FLAG_SEC);
-	rt_interrupt_leave();
-  /* USER CODE END RTC_IRQn 1 */
+    /* USER CODE END RTC_IRQn 0 */
+
+    /* USER CODE BEGIN RTC_IRQn 1 */
+    rt_interrupt_enter();
+    if (__HAL_RTC_ALARM_GET_FLAG(&hrtc, RTC_FLAG_ALRAF))
+    {
+        __HAL_RTC_ALARM_CLEAR_FLAG(&hrtc, RTC_FLAG_ALRAF);
+        __HAL_RTC_ALARM_EXTI_CLEAR_FLAG();
+        rt_kprintf("alram interrupt....\r\n");
+    }
+
+    if (__HAL_RTC_SECOND_GET_FLAG(&hrtc, RTC_FLAG_SEC))
+    {
+        HAL_GPIO_TogglePin(RGB1_B_GPIO_Port, RGB1_B_Pin);
+        __HAL_RTC_SECOND_CLEAR_FLAG(&hrtc, RTC_FLAG_SEC);
+    }
+    rt_interrupt_leave();
+    /* USER CODE END RTC_IRQn 1 */
 }
+
+/**
+  * @brief This function handles RTC alarm interrupt.
+  */
+
+void RTC_Alarm_IRQHandler(void)
+{
+    /* USER CODE BEGIN RTC_IRQn 0 */
+
+    /* USER CODE END RTC_IRQn 0 */
+
+    /* USER CODE BEGIN RTC_IRQn 1 */
+    rt_interrupt_enter();
+
+    //__HAL_RTC_ALARM_CLEAR_FLAG(&hrtc,RTC_FLAG_ALRAF);
+    //__HAL_RTC_ALARM_EXTI_GET_FLAG();
+
+    rt_kprintf("alram interrupt....\r\n");
+    HAL_RTC_AlarmIRQHandler(&hrtc);
+
+    rt_interrupt_leave();
+    /* USER CODE END RTC_IRQn 1 */
+}
+
 
 /**
   * @brief This function handles USART1 global interrupt.
   */
 
 extern struct rt_ringbuffer uart_bc28_rxcb;
+extern rt_sem_t uart1_read_data_sem;
+int  uart1_recv_cnt=0;
+
+
 void USART1_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART1_IRQn 0 */
+    /* USER CODE BEGIN USART1_IRQn 0 */
 
-  /* USER CODE END USART1_IRQn 0 */
-  //HAL_UART_IRQHandler(&huart1);
-  /* USER CODE BEGIN USART1_IRQn 1 */
-	 int ch = -1;
-    rt_interrupt_enter();       
+    /* USER CODE END USART1_IRQn 0 */
+    //HAL_UART_IRQHandler(&huart1);
+    /* USER CODE BEGIN USART1_IRQn 1 */
+    int ch = -1;
+
+    rt_interrupt_enter();
 
     if ((__HAL_UART_GET_FLAG(&(huart1), UART_FLAG_RXNE) != RESET) &&
-        (__HAL_UART_GET_IT_SOURCE(&(huart1), UART_IT_RXNE) != RESET))
+            (__HAL_UART_GET_IT_SOURCE(&(huart1), UART_IT_RXNE) != RESET))
     {
         while (1)
         {
@@ -247,15 +298,26 @@ void USART1_IRQHandler(void)
             if (ch == -1)
             {
                 break;
-            }  
+            }
+						uart1_recv_cnt++;//收到的数据个数
+						__HAL_UART_CLEAR_FLAG(&(huart1),UART_FLAG_RXNE);
             rt_ringbuffer_putchar(&uart_bc28_rxcb, ch);
-        }        
+        }
     }
+		
+		if(RESET !=__HAL_UART_GET_FLAG(&(huart1),UART_FLAG_IDLE))
+		{
+			__HAL_UART_CLEAR_IDLEFLAG(&huart1);
+			 rt_sem_release(uart1_read_data_sem);//释放信号量
+			//rt_kprintf("uart recv cnt : %d\r\n",cnt);
+			//cnt=0;
+		}
+
 
     /* leave interrupt */
-    rt_interrupt_leave();   
+    rt_interrupt_leave();
 
-  /* USER CODE END USART1_IRQn 1 */
+    /* USER CODE END USART1_IRQn 1 */
 }
 
 /**
@@ -267,18 +329,18 @@ extern struct rt_ringbuffer  uart_rxcb;
 
 void USART2_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART2_IRQn 0 */
+    /* USER CODE BEGIN USART2_IRQn 0 */
 
-  /* USER CODE END USART2_IRQn 0 */
-  //HAL_UART_IRQHandler(&huart2);
-  /* USER CODE BEGIN USART2_IRQn 1 */
+    /* USER CODE END USART2_IRQn 0 */
+    //HAL_UART_IRQHandler(&huart2);
+    /* USER CODE BEGIN USART2_IRQn 1 */
     int ch = -1;
-   // rt_base_t level;
+    // rt_base_t level;
     /* enter interrupt */
     rt_interrupt_enter();          //在中断中一定要调用这对函数，进入中断
 
     if ((__HAL_UART_GET_FLAG(&(huart2), UART_FLAG_RXNE) != RESET) &&
-        (__HAL_UART_GET_IT_SOURCE(&(huart2), UART_IT_RXNE) != RESET))
+            (__HAL_UART_GET_IT_SOURCE(&(huart2), UART_IT_RXNE) != RESET))
     {
         while (1)
         {
@@ -290,18 +352,18 @@ void USART2_IRQHandler(void)
             if (ch == -1)
             {
                 break;
-            }  
+            }
             /* 读取到数据，将数据存入 ringbuffer */
             rt_ringbuffer_putchar(&uart_rxcb, ch);
-        }        
+        }
         rt_sem_release(&shell_rx_sem);
     }
 
     /* leave interrupt */
     rt_interrupt_leave();    //在中断中一定要调用这对函数，离开中断
-	
-	
-  /* USER CODE END USART2_IRQn 1 */
+
+
+    /* USER CODE END USART2_IRQn 1 */
 }
 
 /**
@@ -309,13 +371,13 @@ void USART2_IRQHandler(void)
   */
 void EXTI15_10_IRQHandler(void)
 {
-  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+    /* USER CODE BEGIN EXTI15_10_IRQn 0 */
 
-  /* USER CODE END EXTI15_10_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
-  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+    /* USER CODE END EXTI15_10_IRQn 0 */
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
+    /* USER CODE BEGIN EXTI15_10_IRQn 1 */
 
-  /* USER CODE END EXTI15_10_IRQn 1 */
+    /* USER CODE END EXTI15_10_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
